@@ -1,0 +1,62 @@
+﻿@page
+@model CLDTraining2.Pages.IndexModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkoutList[0].ExerciseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkoutList[0].SetsNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkoutList[0].RepsNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkoutList[0].Split)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.WorkoutList) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExerciseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SetsNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RepsNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Split)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.MuscleGroup">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.MuscleGroup">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.MuscleGroup">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>
