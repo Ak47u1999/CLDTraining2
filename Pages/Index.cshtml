@@ -2,7 +2,7 @@
 @model CLDTraining2.Pages.IndexModel
 
 @{
-    Layout = null;
+    Layout = "_layout";
 }
 
 <!DOCTYPE html>
@@ -13,50 +13,42 @@
     <title>Index</title>
 </head>
 <body>
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.WorkoutList[0].ExerciseName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WorkoutList[0].SetsNum)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WorkoutList[0].RepsNum)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WorkoutList[0].Split)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.WorkoutList) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExerciseName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SetsNum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RepsNum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Split)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.MuscleGroup">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.MuscleGroup">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.MuscleGroup">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <p>
+        <a asp-page="Create">Create New</a>
+        &nbsp;&nbsp;&nbsp;
+        <a asp-page="Motivation">Motivational Music</a>
+    </p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(model => model.WorkoutList[0].MuscleGroup)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.WorkoutList[0].ExerciseName)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.WorkoutList[0].SetsNum)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.WorkoutList[0].RepsNum)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.WorkoutList[0].Split)</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.WorkoutList)
+            {
+
+                <tr>
+                    <th scope="row">@Html.DisplayFor(modelItem => item.MuscleGroup)</th>
+                    <th scope="row">@Html.DisplayFor(modelItem => item.ExerciseName)</th>
+                    <td scope="row">@Html.DisplayFor(modelItem => item.SetsNum)</td>
+                    <td scope="row">@Html.DisplayFor(modelItem => item.RepsNum)</td>
+                    <td scope="row">@Html.DisplayFor(modelItem => item.Split)</td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.MuscleGroup">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.MuscleGroup">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.MuscleGroup">Delete</a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
 </body>
 </html>
