@@ -2,7 +2,7 @@
 @model CLDTraining2.Pages.EditModel
 
 @{
-    Layout = null;
+    Layout = "_layout";
 }
 
 <!DOCTYPE html>
@@ -21,6 +21,11 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="WorkoutList.MuscleGroup" />
+            <div class="form-group">
+                <label asp-for="WorkoutList.MuscleGroup" class="control-label"></label>
+                <input asp-for="WorkoutList.MuscleGroup" class="form-control" readonly/>
+                <span asp-validation-for="WorkoutList.MuscleGroup" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="WorkoutList.ExerciseName" class="control-label"></label>
                 <input asp-for="WorkoutList.ExerciseName" class="form-control" />
